@@ -1,0 +1,91 @@
+<div class="container">
+    <div>
+        <form autocomplete="off" [formGroup]="rankingForm">
+            <select class="px-2 py-2 mr-2 rounded-md shadow-sm border-2 focus:border-azul outline-none" name='ano'
+                formControlName="ano">
+                <option *ngFor=" let ano of anos" [ngValue]="ano.value">{{ano.value}}</option>
+            </select>
+            <select class="px-2 py-2 mr-2 rounded-md shadow-sm border-2 focus:border-azul outline-none" name='mes'
+                formControlName="mes">
+                <option *ngFor="let mes of meses" [ngValue]="mes.value">{{mes.nome}}</option>
+            </select>
+            <select class="px-2 py-2 mr-2 rounded-md shadow-sm border-2 focus:border-azul outline-none"
+                name='subseguimento' formControlName="subseguimento">
+                <option *ngFor="let subseguimento of subseguimentos" [ngValue]="subseguimento.value">
+                    {{subseguimento.nome}}</option>
+            </select>
+            <button class="bg-azul hover:bg-blue-900 text-white font-bold p-2 rounded" type="button"
+                (click)="buscar()">Buscar</button>
+        </form>
+    </div>
+    <div *ngIf="loading === true" class="flex justify-center items-center h-full h-screen overflow-auto">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-azul"></div>
+    </div>
+    <div *ngIf="isEmpty === true" class="flex justify-center items-center h-full h-screen overflow-auto">
+        <span>Os dados deste período podem não ter sido disponibilizados ainda, refaça a busca em outro
+            período</span>
+    </div>
+    <div *ngIf="ranking.length > 0">
+        <div class="mt-4">
+            <h4 class="mt-4 text-2xl font-bold text-gray-700">10 Primeiros -
+                {{utilService.nomeMes(ranking[0].mes)}}/{{ranking[0].ano}}</h4>
+        </div>
+        <div class="grid mt-2 gap-2 md:grid-cols-2 lg:grid-cols-5">
+            <a *ngFor="let item of dezPrimeiros" [routerLink]="['/carro', item.modelo, item.subseguimento]">
+                <div class="p-4 bg-white rounded-md shadow-md">
+                    <div>
+                        <span class="text-sm text-gray-500">{{item.posicao}} - {{item.modelo}}</span>
+                    </div>
+                    <div class="flex justify-start items-center">
+                        <img src="assets/logos/{{item.marca}}.png" alt="Logomarca"
+                            onerror="this.onerror=null; this.src='assets/logos/NO_IMAGE.png'" class="h-7 w-7 mr-2" />
+                        <h1 class="text-base font-semibold text-gray-900">{{item.quantidade | number}}</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <h4 class="mt-2 text-2xl font-bold text-gray-700">Ranking Geral -
+            {{utilService.nomeMes(ranking[0].mes)}}/{{ranking[0].ano}}</h4>
+        <div class="bg-white p-4 mt-2 rounded-md shadow-md">
+            <app-bar-chart [data]="dataGraficoRanking" [titulo]="'Quantidade'"></app-bar-chart>
+        </div>
+        <div class="grid gap-2 mt-4 md:grid-cols-3 lg:grid-cols-5">
+            <a *ngFor="let item of ranking" [routerLink]="['/carro', item.modelo, item.subseguimento]">
+                <div class="p-2 bg-white text-center rounded-md shadow-md">
+                    <div class='flex justify-start items-center'>
+                        <img src="assets/logos/{{item.marca}}.png" alt="Logomarca"
+                            onerror="this.onerror=null; this.src='assets/logos/NO_IMAGE.png'" class="h-6 w-6 mr-2" />
+                        <span class="text-sm font-bold text-gray-400">{{item.modelo}}</span>
+                    </div>
+                    <div class='flex justify-start items-center'>
+                        <span class="text-sm font-bold text-gray-400 mr-2">{{item.posicao}}°: </span>
+                        <span class="text-sm font-bold text-black mr-2">{{item.quantidade | number}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mt-4">
+            <h4 class="mt-4 text-2xl font-bold text-gray-700">Ranking Por Marca -
+                {{utilService.nomeMes(ranking[0].mes)}}/{{ranking[0].ano}}
+            </h4>
+            <span class="text-sm">*Somatória dos 50 primeiros colocados</span>
+        </div>
+        <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+            <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+                <div *ngFor="let item of rankingPorMarca" class="p-2 bg-white  rounded-md shadow-md">
+                    <div>
+                        <span class="text-xs font-semibold text-gray-400">{{item.marca}}</span>
+                    </div>
+                    <div class="flex justify-start items-center">
+                        <img src="assets/logos/{{item.marca}}.png" alt="Logomarca"
+                            onerror="this.onerror=null; this.src='assets/logos/NO_IMAGE.png'" class="h-7 w-7 mr-2">
+                        <h1 class="text-xs font-bold">{{item.quantidade | number}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white mt-2 p-4 rounded-md shadow-md">
+                <app-doughnut-chart [data]="dataGraficoMarcas" [titulo]="'Carros'"></app-doughnut-chart>
+            </div>
+        </div>
+    </div>
+</div>
