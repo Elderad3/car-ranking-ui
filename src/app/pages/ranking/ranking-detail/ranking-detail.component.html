@@ -15,32 +15,23 @@
                 <h1 class="lg:text-8xl md:text-5xl sm:text-5xl font-bold"> {{ranking[0]?.modelo}}</h1>
             </div>
         </div>
-        <!-- <div class="mt-2">
-            <h4 class="mt-2 text-2xl font-bold text-gray-700">Ranking Geral</h4>
-        </div> -->
-        <!-- <div class="grid mt-2 gap-4 md:grid-cols-1 lg:grid-cols-5">
-            <div class="p-6 bg-white rounded shadow" *ngFor="let item of ranking">
-                <div>
-                    <p class="text-sm font-semibold text-gray-400">{{utilService.nomeMes(item.mes)}}/{{item.ano}}</p>
-                    <p class="text-sm font-semibold text-gray-400">Posição: {{item.posicao | number}}</p>
-                </div>
-                <div class="flex justify-start items-center">
-                    <img src="assets/logos/{{item.marca}}.png" alt="Logomarca" class="h-7 w-7 mr-2" />
-                    <h1 class="font-bold">{{item.quantidade | number}}</h1>
-                </div>
-            </div>
-        </div> -->
-        <h4 class="mt-2 text-2xl font-bold text-gray-700">Ranking por mês e quantidade</h4>
+        <h4 class="mt-2 text-2xl font-bold text-gray-700">Emplacamentos por mês e quantidade</h4>
         <div class="bg-white p-4 mt-2 rounded-md shadow-md">
             <app-line-chart [data]="dataGraficoRankingQuantidade" [titulo]="'Quantidade'"></app-line-chart>
         </div>
-        <h4 class="mt-2 text-2xl font-bold text-gray-700">Ranking por mês e posição</h4>
+        <h4 class="mt-2 text-2xl font-bold text-gray-700">Emplacamentos por mês e posição</h4>
         <div class="bg-white p-4 mt-2 rounded-md shadow-md">
-            <app-bar-chart [data]="dataGraficoRankingPosicao" [titulo]="'Posição'"></app-bar-chart>
+            <app-line-chart [data]="dataGraficoRankingPosicao" [titulo]="'Posição'"></app-line-chart>
+        </div>
+        <div class="text-xs text-gray-600 mt-4">
+            <span>Fonte: <a class="text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://www.fenabrave.org.br/" target="_blank">FENABRAVE</a>, Metodologia: Somatória
+                dos veículos que fizeram parte do ranking mensal dos emplacamentos a partir do ano de 2003.</span>
         </div>
         <div class="flex justify-end mt-4 ">
             <button class="bg-azul hover:bg-blue-900 text-white font-bold p-2 rounded" type="button"
                 (click)="voltar()">Voltar</button>
         </div>
+
     </div>
 </div>

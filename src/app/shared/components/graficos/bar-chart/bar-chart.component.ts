@@ -30,7 +30,7 @@ export class BarChartComponent implements OnChanges {
         datasets: [{
           label: this.titulo,
           data: this.data.map((item: { valor: any; }) => item.valor),
-          backgroundColor: this.utilService.CHART_COLLORS.map(item => item),
+          backgroundColor: '#166a8f',
         }]
       },
       options: {

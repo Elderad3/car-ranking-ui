@@ -3,6 +3,8 @@ import { HomeService } from './home.service';
 import { take } from 'rxjs';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { Tipo } from 'src/app/shared/models/tipo';
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
   selector: 'app-home',
@@ -12,20 +14,23 @@ import { Meta, Title } from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
 
 
+
   dezMaisEmplacadosAuto: any[]
   dataChartEmplacadosAuto: any[]
   dezMaisEmplacadosComerciais: any[]
   dataChartEmplacadosComerciais: any[]
   emplacamentosPorAno: any[]
   dataChartEmplacamentosAno: any[]
+  tipos: Tipo[]
 
   loading: boolean = false
 
-  constructor(private homeService: HomeService, private errorService: ErrorService,
+  constructor(private homeService: HomeService, private errorService: ErrorService, private utilService: UtilService,
     private metaService: Meta, private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Emplacamentos no Brasil')
+    this.tipos = this.utilService.tipos
+    this.titleService.setTitle('BR Garagem')
     this.metaService.updateTag(
       { name: 'description', content: 'Visão Geral de Emplacamentos de Veículos no Brasil' }
     );

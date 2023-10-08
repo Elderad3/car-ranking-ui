@@ -5,6 +5,21 @@
     </div>
     <div *ngIf="!loading">
         <div class="mt-4">
+            <h2 class="mt-2 text-2xl font-bold text-gray-700">Ranking por Seguimento
+            </h2>
+        </div>
+        <div class="grid mt-2 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+            <a *ngFor="let tipo of tipos" class="p-4 bg-white  rounded-md shadow-md"
+                [routerLink]="['/mais_emplacados', tipo.chave]">
+                <div class="flex justify-start items-center">
+                    <h3 class="font-semibold text-gray-600">{{tipo.nome}}</h3>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="mt-4">
             <h4 class="mt-2 text-2xl font-bold text-gray-700">10 Automóveis mais emplacados desde 2003
             </h4>
         </div>
@@ -24,7 +39,7 @@
                 </a>
             </div>
             <div class="bg-white mt-2 p-4 rounded-md shadow-md">
-                <app-doughnut-chart [data]="dataChartEmplacadosAuto" [titulo]="'Emplacados'"></app-doughnut-chart>
+                <app-bar-chart [data]="dataChartEmplacadosAuto" [titulo]="'Emplacados'"></app-bar-chart>
             </div>
         </div>
 
@@ -53,7 +68,6 @@
         <div class="mt-4">
             <h4 class="mt-2 text-2xl font-bold text-gray-700">Emplacamentos Por Ano
             </h4>
-            <span class="text-sm">*Somatória dos 50 primeiros colocados</span>
         </div>
         <div class="bg-white p-4 mt-2 rounded-md shadow-md">
             <app-bar-chart [data]="dataChartEmplacamentosAno" [titulo]="'Emplacamentos'"></app-bar-chart>
@@ -69,6 +83,11 @@
                     </div>
                 </div>
             </a>
+        </div>
+        <div class="text-xs text-gray-600 mt-4">
+            <span>Fonte: <a class="text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://www.fenabrave.org.br/" target="_blank">FENABRAVE</a>, Metodologia: Somatória
+                dos veículos que fizeram parte do ranking mensal dos emplacamentos a partir do ano de 2003.</span>
         </div>
 
     </div>

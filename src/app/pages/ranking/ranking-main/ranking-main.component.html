@@ -68,7 +68,6 @@
             <h4 class="mt-4 text-2xl font-bold text-gray-700">Ranking Por Marca -
                 {{utilService.nomeMes(ranking[0].mes)}}/{{ranking[0].ano}}
             </h4>
-            <span class="text-sm">*Somatória dos 50 primeiros colocados</span>
         </div>
         <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
             <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
@@ -84,8 +83,15 @@
                 </div>
             </div>
             <div class="bg-white mt-2 p-4 rounded-md shadow-md">
-                <app-doughnut-chart [data]="dataGraficoMarcas" [titulo]="'Carros'"></app-doughnut-chart>
+                <app-bar-chart [data]="dataGraficoMarcas" [titulo]="'Carros'"></app-bar-chart>
             </div>
         </div>
+        <div class="text-xs text-gray-600 mt-4">
+            <span>Fonte: <a class="text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://www.fenabrave.org.br/" target="_blank">FENABRAVE</a>, Metodologia: Somatória
+                dos veículos que fizeram parte do ranking mensal dos emplacamentos a partir do ano de 2003.</span>
+        </div>
     </div>
+
+
 </div>

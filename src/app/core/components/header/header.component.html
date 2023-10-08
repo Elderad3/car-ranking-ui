@@ -3,20 +3,36 @@
     <div class="flex items-center justify-between h-16">
       <div class="flex items-center">
         <div class="flex-shrink-0">
-          <a routerLink="/home"> <img class="h-10 w-10" src="assets/logos/LOGO_SITE.png" alt="Emplacamentos BR"></a>
+          <a routerLink="/home"> <img class="h-10 w-10" src="assets/logos/LOGO_SITE_1.png" alt="Emplacamentos BR"></a>
         </div>
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <a [routerLink]="['/']"
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Visão Geral</a>
-            <a [routerLink]="['/carros']"
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+            <a [routerLink]="['/ranking_por_ano_e_mes']"
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Emplacamentos Por
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Ranking Por
               Ano e Mês</a>
-            <!-- <a [routerLink]="['/motos']"
+            <a [routerLink]="['/mais_emplacados/veiculos_de_entrada']"
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Motos</a> -->
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Veículos de
+              Entrada</a>
+            <a [routerLink]="['/mais_emplacados/hatch_pequenos']"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Hatchs Pequenos</a>
+            <a [routerLink]="['/mais_emplacados/sedans_pequenos']"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Sedans Pequenos</a>
+            <a [routerLink]="['/mais_emplacados/suvs']"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Suvs</a>
+            <a [routerLink]="['/mais_emplacados/pickups_pequenas']"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Pickups Pequenas</a>
+            <a [routerLink]="['/mais_emplacados/pickups_grandes']"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Pickups Grandes</a>
           </div>
         </div>
       </div>
@@ -54,15 +70,30 @@
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       <a [routerLink]="['/']"
         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Visão Geral</a>
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Início</a>
       <a [routerLink]="['/carros']"
         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Emplacamentos Por Ano e
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Ranking Por Ano e
         Mês</a>
-
-      <!-- <a [routerLink]="['/motos']"
+      <a [routerLink]="['/mais_emplacados/veiculos_de_entrada']"
         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Motos</a> -->
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Veículos de
+        Entrada</a>
+      <a [routerLink]="['/mais_emplacados/hatch_pequenos']"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Hatchs Pequenos</a>
+      <a [routerLink]="['/mais_emplacados/sedans_pequenos']"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Sedans Pequenos</a>
+      <a [routerLink]="['/mais_emplacados/suvs']"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Suvs</a>
+      <a [routerLink]="['/mais_emplacados/pickups_pequenas']"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Pickups Pequenas</a>
+      <a [routerLink]="['/mais_emplacados/pickups_grandes']"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{ exact: true }">Pickups Grandes</a>
     </div>
   </div>
 </nav>

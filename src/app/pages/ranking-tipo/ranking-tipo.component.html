@@ -1,0 +1,41 @@
+<div class="container">
+    <div *ngIf="loading === true" class="flex justify-center items-center h-full h-screen overflow-auto">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-azul"></div>
+    </div>
+    <div *ngIf="ranking.length > 0">
+        <div class="p-6 bg-white rounded shadow flex justify-start items-center">
+            <div class="mx-2">
+                <h4 class="lg:text-2xl md:text-2xl sm:text-1xl font-semibold text-gray-400">Mais Emplacados </h4>
+            </div>
+            <div class="mx-2">
+                <h3 class="lg:text-4xl md:text-3xl sm:text-2xl font-bold"> {{tipo[0].nome}}</h3>
+            </div>
+        </div>
+        <div class="grid mt-2 gap-2 md:grid-cols-2 lg:grid-cols-5">
+            <a *ngFor="let item of ranking">
+                <div class="p-4 bg-white rounded-md shadow-md">
+                    <div>
+                        <span class="text-sm text-gray-500">{{item.marca}} - {{item.modelo}}</span>
+                    </div>
+                    <div class="flex justify-start items-center">
+                        <img src="assets/logos/{{item.marca}}.png" alt="Logomarca"
+                            onerror="this.onerror=null; this.src='assets/logos/NO_IMAGE.png'" class="h-7 w-7 mr-2" />
+                        <h1 class="text-base font-semibold text-gray-900">{{item.total | number}}</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="bg-white p-4 mt-4 rounded-md shadow-md">
+            <app-bar-chart [data]="dataGraficoRankingQuantidade" [titulo]="'Quantidade'"></app-bar-chart>
+        </div>
+        <div class="text-xs text-gray-600 mt-4">
+            <span>Fonte: <a class="text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://www.fenabrave.org.br/" target="_blank">FENABRAVE</a>, Metodologia: Somatória
+                dos veículos que fizeram parte do ranking mensal dos emplacamentos a partir do ano de 2003.</span>
+        </div>
+        <div class="flex justify-end mt-4 ">
+            <button class="bg-azul hover:bg-blue-900 text-white font-bold p-2 rounded" type="button"
+                (click)="voltar()">Voltar</button>
+        </div>
+    </div>
+</div>

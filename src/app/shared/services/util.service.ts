@@ -3,6 +3,7 @@ import { Mes } from "../models/mes"
 import { Injectable } from '@angular/core';
 import { Seguimento } from "../models/seguimento";
 import { SubSeguimento } from "../models/subSeguimento";
+import { Tipo } from "../models/tipo";
 
 
 @Injectable({
@@ -20,17 +21,29 @@ export class UtilService {
   subSeguimentos: SubSeguimento[] = [
     { value: 1, nome: "Automóveis*", seguimento: { value: 1, nome: "Carros" } },
     { value: 2, nome: "Comerciais Leves", seguimento: { value: 1, nome: "Carros" } },
-    { value: 3, nome: "Todos os Subseguimentos", seguimento: { value: 2, nome: "Motos" } },
-    { value: 4, nome: "City", seguimento: { value: 2, nome: "Motos" } },
-    { value: 5, nome: "Custom", seguimento: { value: 2, nome: "Motos" } },
-    { value: 6, nome: "Trail/Fun", seguimento: { value: 2, nome: "Motos" } },
-    { value: 7, nome: "Maxtrail", seguimento: { value: 2, nome: "Motos" } },
-    { value: 8, nome: "Naked/Roadster", seguimento: { value: 2, nome: "Motos" } },
-    { value: 9, nome: "Scooter/Cub", seguimento: { value: 2, nome: "Motos" } },
-    { value: 10, nome: "Sport", seguimento: { value: 2, nome: "Motos" } },
-    { value: 11, nome: "Touring", seguimento: { value: 2, nome: "Motos" } },
-
   ]
+
+  tipos: Tipo[] = [
+    { chave: 'veiculos_de_entrada', nome: 'Veículos de Entrada' },
+    { chave: 'hatch_pequenos', nome: 'Hatch Pequenos' },
+    { chave: 'hatch_medios', nome: 'Hatch Médios' },
+    { chave: 'sedans_pequenos', nome: 'Sedans Pequenos' },
+    { chave: 'sedans_compactos', nome: 'Sedans Compactos' },
+    { chave: 'sedans_medios', nome: 'Sedans médios' },
+    { chave: 'sedans_grandes', nome: 'Sedans Grandes' },
+    { chave: 'sw_medios', nome: 'Sw Médios' },
+    { chave: 'sw_grandes', nome: 'Sw Grandes' },
+    { chave: 'monocap', nome: 'Monocab' },
+    { chave: 'grandcap', nome: 'Grandcab' },
+    { chave: 'sports', nome: 'Sports' },
+    { chave: 'suvs', nome: 'Suvs' },
+    { chave: 'pickups_pequenas', nome: 'Pick-ups Pequenas' },
+    { chave: 'pickups_grandes', nome: 'Pick-ups Grandes' },
+    { chave: 'furgoes', nome: 'Furgões' },
+    { chave: 'furgoes_pequenos', nome: 'Furgões Pequenos' },
+  ]
+
+
 
 
   anos: Ano[] = [
@@ -96,6 +109,21 @@ export class UtilService {
 
   CHART_COLLORS = ['#005f73', '#0a9396', '#94d2bd', '#e9d8a6', '#ee9b00', '#ca6702', '#bb3e03', '#ae2012', '#9b2226',
     '#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#f9c80e', '#f86624', '#ea3546', '#662e9b', '#43bccd']
+
+  CHART_COLORS2 = [
+    '#4dc9f6',
+    '#f67019',
+    '#f53794',
+    '#537bc4',
+    '#acc236',
+    '#166a8f',
+    '#00a950',
+    '#58595b',
+    '#8549ba'
+    //'rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)', 'rgb(201, 203, 207)'
+  ]
+
+
 
   agruparLista = (lista: any, propriedade: any) => {
     return lista.reduce(function (total: any, obj: any) {

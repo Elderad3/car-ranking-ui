@@ -29,7 +29,7 @@ export class DoughnutChartComponent implements OnChanges {
         datasets: [{
           label: this.titulo,
           data: this.data.map((item: { valor: number; }) => item.valor),
-          backgroundColor: this.utilService.CHART_COLLORS.map(item => item),
+          backgroundColor: this.utilService.CHART_COLORS2.map(item => item)
         }]
       },
       options: {
