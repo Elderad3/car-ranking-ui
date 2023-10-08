@@ -36,26 +36,20 @@ export class RankingTipoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.tipos = this.utilService.tipos
     let param: any = this.route.snapshot.paramMap.get('tipo')
-    console.log(param)
     this.tipo = this.tipos.filter(tipo => tipo.chave === param)
-    console.log(this.tipo)
     this.rankingPorTipo(param)
 
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         let param: any = this.route.snapshot.paramMap.get('tipo')
-        console.log(param)
         this.tipo = this.tipos.filter(tipo => tipo.chave === param)
         this.rankingPorTipo(param)
-      } else {
-
       }
     });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
-    console.log("Componente destruído")
   }
 
   /**

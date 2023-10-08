@@ -29,6 +29,7 @@
         <div class="mt-4">
             <h4 class="mt-4 text-2xl font-bold text-gray-700">10 Primeiros -
                 {{utilService.nomeMes(ranking[0].mes)}}/{{ranking[0].ano}}</h4>
+            <span class="text-xs text-gray-600">Dica: Clique no carro para ver detalhes.</span>
         </div>
         <div class="grid mt-2 gap-2 md:grid-cols-2 lg:grid-cols-5">
             <a *ngFor="let item of dezPrimeiros" [routerLink]="['/carro', item.modelo, item.subseguimento]">
