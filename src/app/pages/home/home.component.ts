@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   emplacamentosPorAno: any[]
   dataChartEmplacamentosAno: any[]
   tipos: Tipo[]
-
   loading: boolean = false
 
   constructor(private homeService: HomeService, private errorService: ErrorService, private utilService: UtilService,
@@ -34,14 +33,14 @@ export class HomeComponent implements OnInit {
     this.metaService.updateTag(
       { name: 'description', content: 'Visão Geral de Emplacamentos de Veículos no Brasil' }
     );
+    this.loading = !this.loading
     this.dezMaisEmplacadosAutomoveis()
     this.dezMaisEmplacadosComerciaisLeves()
     this.emplacadosPorAno()
-
+    this.loading = !this.loading
   }
 
   dezMaisEmplacadosAutomoveis() {
-    this.loading = !this.loading
     this.homeService.dezMaisEmplacadosAutomoveis().pipe(
       take(1)
     ).subscribe((d) => {
@@ -70,7 +69,6 @@ export class HomeComponent implements OnInit {
     ).subscribe((d) => {
       this.emplacamentosPorAno = d
       this.dataChartEmplacamentosAno = d.map(item => ({ label: item.ano, valor: item.quantidade }))
-      this.loading = !this.loading
     }, err => {
       this.errorService.handle(err)
     })

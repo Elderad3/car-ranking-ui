@@ -17,6 +17,7 @@ export class RankingTipoComponent implements OnInit, OnDestroy {
   tipos: Tipo[]
   tipo: any
   loading: boolean = false
+  isEmpty: boolean = false
   ranking: any[] = [];
   dataGraficoRankingQuantidade: any = []
   dataGraficoRankingPosicao: any = []
@@ -63,6 +64,7 @@ export class RankingTipoComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe((ranking) => {
       this.ranking = ranking;
+      this.ranking.length ? this.isEmpty = false : this.isEmpty = true
       this.atualizarTituloEMetaTag()
       this.dataGraficoRankingQuantidade = this.ranking.map(item => ({ label: `${item.marca}/${item.modelo}`, valor: item.total }))
       this.loading = !this.loading

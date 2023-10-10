@@ -5,7 +5,7 @@
     </div>
     <div *ngIf="!loading">
         <div class="mt-4">
-            <h2 class="mt-2 text-2xl font-bold text-gray-700">Ranking por Seguimento
+            <h2 class="mt-2 text-2xl font-bold text-gray-700">Ranking de emplacamentos por Seguimento
             </h2>
         </div>
         <div class="grid mt-2 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -27,7 +27,7 @@
 
         </div>
 
-        <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+        <div *ngIf="dezMaisEmplacadosAuto" class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
             <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
 
                 <a *ngFor="let item of dezMaisEmplacadosAuto" class="p-2 bg-white  rounded-md shadow-md"
@@ -41,7 +41,7 @@
                     </div>
                 </a>
             </div>
-            <div class="bg-white mt-2 p-4 rounded-md shadow-md">
+            <div *ngIf="dataChartEmplacadosAuto" class="bg-white mt-2 p-4 rounded-md shadow-md">
                 <app-bar-chart [data]="dataChartEmplacadosAuto" [titulo]="'Emplacados'"></app-bar-chart>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <h4 class="mt-2 text-2xl font-bold text-gray-700">10 Comerciais Leves mais emplacados desde 2003
             </h4>
         </div>
-        <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+        <div *ngIf="dezMaisEmplacadosComerciais" class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
             <div class="grid mt-2 gap-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
                 <a *ngFor="let item of dezMaisEmplacadosComerciais"
                     [routerLink]="['/carro', item.modelo, item.subseguimento]"
@@ -64,7 +64,7 @@
                     </div>
                 </a>
             </div>
-            <div class="bg-white mt-2 p-4 rounded-md shadow-md">
+            <div *ngIf="dataChartEmplacadosComerciais" class="bg-white mt-2 p-4 rounded-md shadow-md">
                 <app-bar-chart [data]="dataChartEmplacadosComerciais" [titulo]="'Emplacados'"></app-bar-chart>
             </div>
         </div>
@@ -72,10 +72,10 @@
             <h4 class="mt-2 text-2xl font-bold text-gray-700">Emplacamentos Por Ano
             </h4>
         </div>
-        <div class="bg-white p-4 mt-2 rounded-md shadow-md">
+        <div *ngIf="dataChartEmplacamentosAno" class="bg-white p-4 mt-2 rounded-md shadow-md">
             <app-bar-chart [data]="dataChartEmplacamentosAno" [titulo]="'Emplacamentos'"></app-bar-chart>
         </div>
-        <div class="grid gap-2 mt-4 md:grid-cols-3 lg:grid-cols-5">
+        <div *ngIf="emplacamentosPorAno" class="grid gap-2 mt-4 md:grid-cols-3 lg:grid-cols-5">
             <a *ngFor="let item of emplacamentosPorAno">
                 <div class="p-2 bg-white text-center rounded-md shadow-md">
                     <div class='flex justify-start items-center'>

@@ -1,4 +1,7 @@
 <div class="container">
+    <div *ngIf="isEmpty === true" class="flex justify-center items-center h-full h-screen overflow-auto">
+        <span>Sua consulta não retornou resultados</span>
+    </div>
     <div *ngIf="loading === true" class="flex justify-center items-center h-full h-screen overflow-auto">
         <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-azul"></div>
     </div>
@@ -12,7 +15,7 @@
             </div>
         </div>
         <div class="grid mt-2 gap-2 md:grid-cols-2 lg:grid-cols-5">
-            <a *ngFor="let item of ranking">
+            <a *ngFor="let item of ranking" [routerLink]="['/carro', item.modelo, item.subseguimento]">
                 <div class="p-4 bg-white rounded-md shadow-md">
                     <div>
                         <span class="text-sm text-gray-500">{{item.marca}} - {{item.modelo}}</span>
@@ -33,9 +36,10 @@
                     href="https://www.fenabrave.org.br/" target="_blank">FENABRAVE</a>, Metodologia: Somatória
                 dos veículos que fizeram parte do ranking mensal dos emplacamentos a partir do ano de 2003.</span>
         </div>
-        <div class="flex justify-end mt-4 ">
-            <button class="bg-azul hover:bg-blue-900 text-white font-bold p-2 rounded" type="button"
-                (click)="voltar()">Voltar</button>
-        </div>
+
+    </div>
+    <div class="flex justify-end mt-4 ">
+        <button class="bg-azul hover:bg-blue-900 text-white font-bold p-2 rounded" type="button"
+            (click)="voltar()">Voltar</button>
     </div>
 </div>
